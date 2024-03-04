@@ -41,9 +41,9 @@
 
     <TextView
         android:id="@+id/txtView_antwortServer"
-        android:layout_width="599dp"
-        android:layout_height="206dp"
-        android:layout_marginTop="384dp"
+        android:layout_width="409dp"
+        android:layout_height="148dp"
+        android:layout_marginTop="388dp"
         android:gravity="center"
         android:text="Antwort vom Server"
         android:textSize="24.dp"
