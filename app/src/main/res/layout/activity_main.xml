@@ -9,11 +9,11 @@
 
     <TextView
         android:id="@+id/txtView_MatNr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="333dp"
+        android:layout_height="79dp"
         android:layout_marginTop="164dp"
         android:text="Gib deine Matrikelnumer ein"
-        android:textSize="36.dp"
+        android:textSize="24.dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,10 +22,9 @@
         android:id="@+id/btn_abschicken"
         android:layout_width="196dp"
         android:layout_height="65dp"
-        android:layout_marginTop="756dp"
+        android:layout_marginTop="632dp"
         android:text="ABSCHICKEN"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,12 +43,11 @@
         android:id="@+id/txtView_antwortServer"
         android:layout_width="599dp"
         android:layout_height="206dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="384dp"
         android:gravity="center"
         android:text="Antwort vom Server"
-        android:textSize="36.dp"
+        android:textSize="24.dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
