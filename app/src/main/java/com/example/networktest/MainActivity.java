@@ -40,7 +40,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnCalc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String transformed = calcMatNr(txtInput.getText().toString());
+                txtAnswer.setText(transformed);
+            }
+        });
+
     }
+
     private void sendMatrikelnummer(String matNr) {
         new Thread(() -> {
             try (Socket socket = new Socket("se2-submission.aau.at", 20080);
@@ -65,5 +74,20 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
+
+    private String calcMatNr(String number) {
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < number.length(); i++) {
+            if ((i + 1) % 2 == 0) {
+                int digit = Character.getNumericValue(number.charAt(i));
+                char letter = (char) ('a' + digit);
+                sb.append(letter);
+            } else {
+                sb.append(Character.getNumericValue(number.charAt(i)));
+            }
+        }
+        return sb.toString();
+    }
 }
 
