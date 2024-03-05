@@ -11,7 +11,7 @@
         android:id="@+id/txtView_MatNr"
         android:layout_width="333dp"
         android:layout_height="79dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="116dp"
         android:text="Gib deine Matrikelnumer ein"
         android:textSize="24.dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,11 +20,12 @@
 
     <Button
         android:id="@+id/btn_abschicken"
-        android:layout_width="196dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="632dp"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="628dp"
         android:text="ABSCHICKEN"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,10 +33,11 @@
         android:id="@+id/editTxt_eingabeMatNr"
         android:layout_width="294dp"
         android:layout_height="59dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="256dp"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,11 +45,22 @@
         android:id="@+id/txtView_antwortServer"
         android:layout_width="409dp"
         android:layout_height="148dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="360dp"
         android:gravity="center"
         android:text="Antwort vom Server"
         android:textSize="24.dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_berechnen"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="628dp"
+        android:text="BERECHNEN"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.896"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
