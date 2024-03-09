@@ -13,12 +13,10 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText txtInput;
     private TextView txtAnswer;
 
 
@@ -27,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtInput = findViewById(R.id.editTxt_eingabeMatNr);
+        EditText txtInput = findViewById(R.id.editTxt_eingabeMatNr);
         txtAnswer = findViewById(R.id.txtView_antwortServer);
         Button btnSend = findViewById(R.id.btn_abschicken);
         Button btnCalc = findViewById(R.id.btn_berechnen);
 
-        // OnClickListener für den Button
+        // Abschicken
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Berechnen
         btnCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,28 +46,28 @@ public class MainActivity extends AppCompatActivity {
                 txtAnswer.setText(transformed);
             }
         });
-
     }
 
-    private void sendMatrikelnummer(String matNr) {
+    private void sendMatrikelnummer(String matNr){
         new Thread(() -> {
-            try (Socket socket = new Socket("se2-submission.aau.at", 20080);
-                 //BufferedWriter nicht möglich
-                 //BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                 PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+            try {
+                Socket socket = new Socket("se2-submission.aau.at", 20080);
 
-                // senden MatNr
-                out.println(matNr);
-                out.flush();    // damit alle Daten gesendet sind
+                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                // Lesen der Antwort vom Server
-                String response = in.readLine();
+                out.write(matNr + "\n");
+                out.flush();    //damit alle Daten gesendet werden
+
+                String response = in.readLine(); //wartet auf eine Nachricht und blockiert bis eine empfangen wird
 
                 runOnUiThread(() -> txtAnswer.setText(response));
 
+                out.close();
+                in.close();
+                socket.close();
+
             } catch (Exception e) {
-                e.printStackTrace();
                 runOnUiThread(() -> txtAnswer.setText("Fehler: " + e.getMessage()));
             }
         }).start();
@@ -78,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     private String calcMatNr(String number) {
 
         StringBuilder sb = new StringBuilder();
+
         for (int i = 0; i < number.length(); i++) {
             if ((i + 1) % 2 == 0) {
                 int digit = Character.getNumericValue(number.charAt(i));
