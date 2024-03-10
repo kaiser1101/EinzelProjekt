@@ -42,8 +42,12 @@ public class MainActivity extends AppCompatActivity {
         btnCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String transformed = calcMatNr(txtInput.getText().toString());
-                txtAnswer.setText(transformed);
+                try {
+                    String transformed = calcMatNr(txtInput.getText().toString());
+                    txtAnswer.setText(transformed);
+                }catch (Exception e){
+                    txtAnswer.setText("Fehler: " + e.getMessage());
+                }
             }
         });
     }
@@ -75,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     private String calcMatNr(String number) {
+
+        if(number.contains(".") || number.length() != 8){
+            throw new IllegalArgumentException("Unültige MatNr!");
+        }
 
         StringBuilder sb = new StringBuilder();
 
