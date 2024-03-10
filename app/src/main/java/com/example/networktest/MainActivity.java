@@ -79,12 +79,12 @@ public class MainActivity extends AppCompatActivity {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < number.length(); i++) {
+            int digit = Character.getNumericValue(number.charAt(i));
             if ((i + 1) % 2 == 0) {
-                int digit = Character.getNumericValue(number.charAt(i));
                 char letter = (char) ('a' + digit);
                 sb.append(letter);
             } else {
-                sb.append(Character.getNumericValue(number.charAt(i)));
+                sb.append(digit);
             }
         }
         return sb.toString();
